@@ -9,10 +9,9 @@ FastAPI service skeleton for testservice1. Uses SQLAlchemy + Alembic for schema 
 - `infra` — app-level infra (Dockerfile, compose overrides, etc.)
 - `scripts` — local tooling (lint, dev server helpers)
 
-## Quick start (dev)
+## Notes
 - Add dependencies in `pyproject.toml` (or `requirements.txt`).
 - Configure DB URL via `.env`.
-- Run app: `uvicorn app.main:app --reload` (after wiring entrypoint in `main.py`).
 - Manage schema: `alembic revision --autogenerate` then `alembic upgrade head`.
 
 ## Run & test greeting API (with chelsydb Postgres)
@@ -32,7 +31,7 @@ pip install -r requirements.txt   # installs -e ../chelsydb too
 
 2) Run API
 ```
-uvicorn app.main:app --app-dir src --reload --host 0.0.0.0 --port 8000 --env-file .env
+python -m uvicorn app.main:app --app-dir src --reload --host 0.0.0.0 --port 8000 --env-file .env
 ```
 
 3) Test greeting endpoint (writes payload.message into testtbl1)
